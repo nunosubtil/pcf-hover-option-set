@@ -36,8 +36,7 @@ export class PCFFluentOptionSet implements ComponentFramework.ReactControl<IInpu
             selectedValue: this._selectedValue,
             options: this._options,
             onChange: this._updateValue.bind(this),
-            isDarkMode: this._isDarkMode,
-            configuration: null
+            isDarkMode: this._isDarkMode
         };
     
         return React.createElement(FluentOptionSet, props);
