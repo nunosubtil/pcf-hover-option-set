@@ -4,11 +4,11 @@ const colors = {
   lightGray: '#fefefe',
   mediumGray: '#adadad',
   lightBackground: '#f8f9fa',
-  darkBackground: '#666666',
+  darkBackground: '#292929',
   lightHoverBackground: '#E7EFF7',
   darkHoverBackground: '#777777',
   activeBlue: '#1160B7',
-  veryDarkGray: '#1f1f1f',
+  veryDarkGray: '#141414',
 };
 
 const styles = {
@@ -18,7 +18,7 @@ const styles = {
   },
   optionSetContainerDark: {
     padding: '10px',
-    backgroundColor: colors.veryDarkGray,
+    backgroundColor: colors.darkBackground,
   },
   optionSetLabel: {
     marginBottom: '10px',
@@ -30,7 +30,7 @@ const styles = {
     marginBottom: '10px',
     fontSize: '14px',
     fontWeight: 600,
-    color: colors.lightGray,
+    color: colors.white,
   },
   optionSetChoices: {
     display: 'flex',
