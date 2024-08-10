@@ -1,5 +1,3 @@
-import { keyframes } from '@fluentui/react/lib/Styling';
-
 const colors = {
   darkGray: '#333',
   lightGray: '#fefefe',
@@ -11,16 +9,6 @@ const colors = {
   activeBlue: '#1160B7',
   veryDarkGray: '#1f1f1f',
 };
-
-const scaleUp = keyframes({
-  from: { transform: 'scale(1)' },
-  to: { transform: 'scale(1.1)' },
-});
-
-const scaleDown = keyframes({
-  from: { transform: 'scale(1.1)' },
-  to: { transform: 'scale(1)' },
-});
 
 const styles = {
   optionSetContainer: {
@@ -77,14 +65,6 @@ const styles = {
   optionSetChoiceSelectedDark: {
     backgroundColor: colors.veryDarkGray,
     color: 'white',
-  },
-  optionSetChoiceHover: {
-    backgroundColor: colors.lightHoverBackground,
-    animation: `${scaleUp} 0.3s forwards`,
-  },
-  optionSetChoiceHoverDark: {
-    backgroundColor: colors.darkHoverBackground,
-    animation: `${scaleUp} 0.3s forwards`,
   },
   optionIcon: {
     marginRight: '8px',
