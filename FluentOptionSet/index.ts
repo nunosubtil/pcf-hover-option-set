@@ -32,15 +32,11 @@ export class PCFFluentOptionSet implements ComponentFramework.ReactControl<IInpu
         this._selectedValue = context.parameters.optionsetFieldControl.raw || 0; 
         this._options = context.parameters.optionsetFieldControl.attributes?.Options || [];
         
-        // Get the label from the OptionSet field
-        const label = context.parameters.optionsetFieldControl.attributes?.DisplayName || "";
-    
         const props: FluentOptionSetProps = {
             selectedValue: this._selectedValue,
             options: this._options,
             onChange: this._updateValue.bind(this),
             isDarkMode: this._isDarkMode,
-            label: label,
             configuration: null
         };
     
