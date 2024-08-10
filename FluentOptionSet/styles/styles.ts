@@ -1,14 +1,16 @@
+import { keyframes, FontWeights, FontSizes } from '@fluentui/react/lib/Styling';
+
 const colors = {
   white: '#ffffff',
   darkGray: '#333',
   lightGray: '#fefefe',
   mediumGray: '#adadad',
   lightBackground: '#f8f9fa',
-  darkBackground: '#292929',
+  darkBackground: '#666666',
   lightHoverBackground: '#E7EFF7',
   darkHoverBackground: '#777777',
   activeBlue: '#1160B7',
-  veryDarkGray: '#141414',
+  activeDark: '1f1f1f',
 };
 
 const styles = {
@@ -22,14 +24,14 @@ const styles = {
   },
   optionSetLabel: {
     marginBottom: '10px',
-    fontSize: '14px',
-    fontWeight: 600,
+    fontWeight: FontWeights.semibold,
+    fontSize: FontSizes.medium,
     color: colors.darkGray,
   },
   optionSetLabelDark: {
     marginBottom: '10px',
-    fontSize: '14px',
-    fontWeight: 600,
+    fontWeight: FontWeights.semibold,
+    fontSize: FontSizes.medium,
     color: colors.white,
   },
   optionSetChoices: {
@@ -53,7 +55,7 @@ const styles = {
     margin: '5px',
     borderRadius: '6px',
     backgroundColor: colors.darkBackground,
-    color: colors.mediumGray,
+    color: colors.white,
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
@@ -64,7 +66,7 @@ const styles = {
     color: 'white',
   },
   optionSetChoiceSelectedDark: {
-    backgroundColor: colors.veryDarkGray,
+    backgroundColor: colors.activeDark,
     color: 'white',
   },
   optionIcon: {
