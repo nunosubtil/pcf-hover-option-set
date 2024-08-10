@@ -22,33 +22,36 @@ export class PCFFluentOptionSet implements ComponentFramework.ReactControl<IInpu
         this.notifyOutputChanged = notifyOutputChanged;
         this._isDarkMode = context.fluentDesignLanguage?.isDarkTheme ?? false;
 
-        // Use the correct property name as defined in the auto-generated IInputs
         const optionsetFieldControl = context.parameters.optionsetFieldControl;
 
-        // Assign the selected value from the OptionSet
         this._selectedValue = optionsetFieldControl.raw || 0; 
-
-        // Retrieve the options metadata
         this._options = optionsetFieldControl.attributes?.Options || [];
     }
 
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
         this._selectedValue = context.parameters.optionsetFieldControl.raw || 0; 
         this._options = context.parameters.optionsetFieldControl.attributes?.Options || [];
+        
+        // Get the label from the OptionSet field
+        const label = context.parameters.optionsetFieldControl.attributes?.DisplayName || "";
     
-        const props: FluentOptionSetProps = { 
+        const props: FluentOptionSetProps = {
             selectedValue: this._selectedValue,
             options: this._options,
             onChange: this._updateValue.bind(this),
-            isDarkMode: this._isDarkMode
+            isDarkMode: this._isDarkMode,
+            label: label,
+            configuration: null
         };
     
         return React.createElement(FluentOptionSet, props);
     }
-    
-    private _updateValue(newValue: number): void {
-        this._selectedValue = newValue;
-        this.notifyOutputChanged();
+
+    private _updateValue(newValue: number | undefined): void {
+        if (newValue !== undefined) {
+            this._selectedValue = newValue;
+            this.notifyOutputChanged();
+        }
     }
 
     public getOutputs(): IOutputs {
