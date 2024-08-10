@@ -1,44 +1,82 @@
+/* eslint-disable react/prop-types */
 import * as React from 'react';
-import { Label, Dropdown, IDropdownOption } from '@fluentui/react';
+import styles from './styles/styles';
 
 export interface FluentOptionSetProps {
   selectedValue: number | null;
   options: ComponentFramework.PropertyHelper.OptionMetadata[];
-  onChange: (newValue: number) => void;
+  onChange: (newValue: number | undefined) => void;
   isDarkMode: boolean;
-  label?: string;
+  disabled: boolean; 
 }
 
-export class FluentOptionSet extends React.Component<FluentOptionSetProps> {
-  public render(): React.ReactNode {
-    const { label, selectedValue, options, isDarkMode } = this.props;
+export const FluentOptionSet: React.FunctionComponent<FluentOptionSetProps> = React.memo((props) => {
+  const { selectedValue, options, onChange, isDarkMode, disabled } = props;
 
-    const dropdownOptions: IDropdownOption[] = options.map(option => ({
-      key: option.Value,
-      text: option.Label
-    }));
+  const valueKey = selectedValue != null ? selectedValue.toString() : undefined;
 
-    const selectedKey = selectedValue !== null ? selectedValue : undefined;
-
-    return (
-      <div style={{ color: isDarkMode ? 'white' : 'black' }}>
-        {label && <Label>{label}</Label>}
-        <Dropdown
-          selectedKey={selectedKey}
-          options={dropdownOptions}
-          onChange={this.onChange}
-          styles={{ dropdown: { width: 300 } }} 
-        />
-      </div>
-    );
-  }
-
-  private onChange = (
-    event: React.FormEvent<HTMLDivElement>,
-    option?: IDropdownOption
-  ): void => {
-    if (option) {
-      this.props.onChange(option.key as number);
+  const onChangeOption = (key: string) => {
+    if (!disabled) {
+      onChange(parseInt(key));
     }
   };
-}
+
+  return (
+    <div
+      style={{
+        ...styles.optionSetContainer,
+        ...(isDarkMode ? styles.optionSetContainerDark : {}),
+        padding: '10px',
+        boxSizing: 'border-box',
+        opacity: disabled ? 0.5 : 1,
+        pointerEvents: disabled ? 'none' : 'auto',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row' as const,
+          flexWrap: 'wrap',
+          justifyContent: 'flex-start', 
+          gap: '5px', 
+        }}
+      >
+        {options.map((item) => (
+          <div
+            key={item.Value.toString()}
+            style={{
+              ...styles.optionSetChoice,
+              ...(isDarkMode ? styles.optionSetChoiceDark : {}),
+              ...(valueKey === item.Value.toString()
+                ? isDarkMode
+                  ? styles.optionSetChoiceSelectedDark
+                  : styles.optionSetChoiceSelected
+                : {}),
+              userSelect: 'none',
+              padding: '5px 15px',
+              flexBasis: 'auto',
+              cursor: disabled ? 'not-allowed' : 'pointer',
+            }}
+            onClick={() => onChangeOption(item.Value.toString())}
+            onMouseEnter={(e) => {
+              if (!disabled) {
+                (e.currentTarget as HTMLDivElement).style.backgroundColor = valueKey === item.Value.toString() ? '#1160B7' : isDarkMode ? '#777777' : '#E7EFF7';
+                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.1)';
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (!disabled) {
+                (e.currentTarget as HTMLDivElement).style.backgroundColor = valueKey === item.Value.toString() ? '#1160B7' : isDarkMode ? '#666666' : '#f8f9fa';
+                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1)';
+              }
+            }}
+          >
+            <span>{item.Label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+});
+
+FluentOptionSet.displayName = 'FluentOptionSet';
