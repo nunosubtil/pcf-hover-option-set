@@ -7,11 +7,13 @@ export class PCFFluentOptionSet implements ComponentFramework.ReactControl<IInpu
     private _selectedValue: number;
     private _options: ComponentFramework.PropertyHelper.OptionMetadata[];
     private _isDarkMode: boolean;
+    private _isDisabled: boolean;
 
     constructor() { 
-        this._selectedValue = 0; // Initialize with a default value
+        this._selectedValue = 0;
         this._options = [];
         this._isDarkMode = false;
+        this._isDisabled = false;
     }
 
     public init(
@@ -32,11 +34,14 @@ export class PCFFluentOptionSet implements ComponentFramework.ReactControl<IInpu
         this._selectedValue = context.parameters.optionsetFieldControl.raw || 0; 
         this._options = context.parameters.optionsetFieldControl.attributes?.Options || [];
         
+        this._isDisabled = context.mode.isControlDisabled;
+    
         const props: FluentOptionSetProps = {
             selectedValue: this._selectedValue,
             options: this._options,
             onChange: this._updateValue.bind(this),
-            isDarkMode: this._isDarkMode
+            isDarkMode: this._isDarkMode,
+            disabled: this._isDisabled
         };
     
         return React.createElement(FluentOptionSet, props);
@@ -51,7 +56,7 @@ export class PCFFluentOptionSet implements ComponentFramework.ReactControl<IInpu
 
     public getOutputs(): IOutputs {
         return { 
-            optionsetFieldControl: this._selectedValue // Ensure _selectedValue is always a number
+            optionsetFieldControl: this._selectedValue
         };
     }
 
