@@ -26,7 +26,7 @@ export const FluentOptionSet: React.FunctionComponent<FluentOptionSetProps> = Re
       style={{
         ...styles.optionSetContainer,
         ...(isDarkMode ? styles.optionSetContainerDark : {}),
-        padding: '10px',
+        padding: '0px',
         boxSizing: 'border-box',
         opacity: disabled ? 0.5 : 1,
         pointerEvents: disabled ? 'none' : 'auto',
