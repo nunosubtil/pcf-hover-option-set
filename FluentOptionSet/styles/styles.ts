@@ -1,4 +1,5 @@
 const colors = {
+  white: '#ffffff',
   darkGray: '#333',
   lightGray: '#fefefe',
   mediumGray: '#adadad',
@@ -13,7 +14,7 @@ const colors = {
 const styles = {
   optionSetContainer: {
     padding: '10px',
-    backgroundColor: colors.lightBackground,
+    backgroundColor: colors.white,
   },
   optionSetContainerDark: {
     padding: '10px',
