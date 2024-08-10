@@ -66,7 +66,11 @@ export const FluentOptionSet: React.FunctionComponent<FluentOptionSetProps> = Re
             }}
             onMouseLeave={(e) => {
               if (!disabled) {
-                (e.currentTarget as HTMLDivElement).style.backgroundColor = valueKey === item.Value.toString() ? '#1160B7' : isDarkMode ? '#666666' : '#f8f9fa';
+                (e.currentTarget as HTMLDivElement).style.backgroundColor = valueKey === item.Value.toString()
+                  ? '#1160B7' // This is the selected color
+                  : isDarkMode
+                    ? '#141414' // Ensure this matches your intended dark mode background
+                    : '#f8f9fa'; // Light mode background
                 (e.currentTarget as HTMLDivElement).style.transform = 'scale(1)';
               }
             }}
