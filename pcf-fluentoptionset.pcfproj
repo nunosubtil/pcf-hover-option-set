@@ -17,6 +17,12 @@
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <!--Remove TargetFramework when this is available in 16.1-->
     <TargetFramework>net462</TargetFramework>
+    <SolutionName>PCFFluentOptionSet</SolutionName> 
+    <PublisherName>nunosubtil</PublisherName> 
+    <CustomizationPrefix>subtil</CustomizationPrefix> 
+    <Version>1.0.0.1</Version> 
+    <License>MIT</License> 
+    <Description>A fluent option set control for PowerApps developed by Nuno Subtil</Description>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
 
