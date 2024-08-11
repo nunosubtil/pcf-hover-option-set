@@ -7,13 +7,16 @@ export class PCFFluentOptionSet implements ComponentFramework.ReactControl<IInpu
     private _selectedValue: number;
     private _options: ComponentFramework.PropertyHelper.OptionMetadata[];
     private _isDarkMode: boolean;
+    private _formFactor: number;
     private _isDisabled: boolean;
 
     constructor() { 
         this._selectedValue = 0;
         this._options = [];
         this._isDarkMode = false;
+        this._formFactor = 0; 
         this._isDisabled = false;
+
     }
 
     public init(
@@ -22,31 +25,34 @@ export class PCFFluentOptionSet implements ComponentFramework.ReactControl<IInpu
         state: ComponentFramework.Dictionary
     ): void {
         this.notifyOutputChanged = notifyOutputChanged;
-        this._isDarkMode = context.fluentDesignLanguage?.isDarkTheme ?? false;
+        this._updateContextValues(context);
 
         const optionsetFieldControl = context.parameters.optionsetFieldControl;
-
         this._selectedValue = optionsetFieldControl.raw || 0; 
         this._options = optionsetFieldControl.attributes?.Options || [];
     }
 
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
-        this._selectedValue = context.parameters.optionsetFieldControl.raw || 0; 
-        this._options = context.parameters.optionsetFieldControl.attributes?.Options || [];
-        
-        this._isDisabled = context.mode.isControlDisabled;
-    
+        this._updateContextValues(context);
+
         const props: FluentOptionSetProps = {
             selectedValue: this._selectedValue,
             options: this._options,
             onChange: this._updateValue.bind(this),
             isDarkMode: this._isDarkMode,
+            formFactor: this._formFactor,
             disabled: this._isDisabled
         };
-    
+
         return React.createElement(FluentOptionSet, props);
     }
 
+    private _updateContextValues(context: ComponentFramework.Context<IInputs>): void {
+        this._isDarkMode = context.fluentDesignLanguage?.isDarkTheme ?? false;
+        this._formFactor = context.client.getFormFactor();
+        this._isDisabled = context.mode.isControlDisabled;
+    }
+    
     private _updateValue(newValue: number | undefined): void {
         if (newValue !== undefined) {
             this._selectedValue = newValue;
