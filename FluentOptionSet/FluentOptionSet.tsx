@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import styles from './styles/styles';
 
 export interface FluentOptionSetProps {
@@ -8,14 +9,15 @@ export interface FluentOptionSetProps {
   onChange: (newValue: number | undefined) => void;
   isDarkMode: boolean;
   disabled: boolean; 
+  formFactor: number;
 }
 
-export const FluentOptionSet: React.FunctionComponent<FluentOptionSetProps> = React.memo((props) => {
-  const { selectedValue, options, onChange, isDarkMode, disabled } = props;
+export const FluentOptionSet: React.FunctionComponent<FluentOptionSetProps> = (props) => {
+  const { selectedValue, options, onChange, isDarkMode, disabled, formFactor } = props;
+
+  const [isMobile, setIsMobile] = useState(formFactor === 2 || formFactor === 3);
 
   const valueKey = selectedValue != null ? selectedValue.toString() : undefined;
-
-  const isMobile = window.innerWidth <= 600;
 
   const onChangeOption = (key: string) => {
     if (!disabled) {
@@ -23,12 +25,16 @@ export const FluentOptionSet: React.FunctionComponent<FluentOptionSetProps> = Re
     }
   };
 
+  useEffect(() => {
+    setIsMobile(formFactor === 2 || formFactor === 3);
+  }, [formFactor]);
+
   return (
     <div
       style={{
         ...styles.optionSetContainer,
         ...(isDarkMode ? styles.optionSetContainerDark : {}),
-        padding: '0px',
+        padding: isMobile ? '5px' : '0px',
         boxSizing: 'border-box',
         opacity: disabled ? 0.9 : 1,
         pointerEvents: disabled ? 'none' : 'auto',
@@ -37,10 +43,9 @@ export const FluentOptionSet: React.FunctionComponent<FluentOptionSetProps> = Re
       <div
         style={{
           display: 'flex',
-          flexDirection: 'row' as const,
-          flexWrap: 'wrap',
+          flexDirection: isMobile ? 'column' : 'row',
+          flexWrap: 'wrap', 
           justifyContent: 'flex-start', 
-          gap: '5px', 
           width: '100%',
         }}
       >
@@ -56,9 +61,16 @@ export const FluentOptionSet: React.FunctionComponent<FluentOptionSetProps> = Re
                   : styles.optionSetChoiceSelected
                 : {}),
               userSelect: 'none',
-              padding: '5px 15px',
-              flexBasis: 'auto',
+              padding: '5px',
+              flexGrow: 1, 
+              flexBasis: '30%', 
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               cursor: disabled ? 'not-allowed' : 'pointer',
+              boxSizing: 'border-box',
+              height: '30px',
+              marginBottom: '5px',
             }}
             onClick={() => onChangeOption(item.Value.toString())}
             onMouseEnter={(e) => {
@@ -89,7 +101,6 @@ export const FluentOptionSet: React.FunctionComponent<FluentOptionSetProps> = Re
                 }
               }
             }}
-            
           >
             <span>{item.Label}</span>
           </div>
@@ -97,6 +108,6 @@ export const FluentOptionSet: React.FunctionComponent<FluentOptionSetProps> = Re
       </div>
     </div>
   );
-});
+};
 
 FluentOptionSet.displayName = 'FluentOptionSet';
