@@ -1,7 +1,8 @@
-import { keyframes, FontWeights, FontSizes } from '@fluentui/react/lib/Styling';
+import { FontWeights, FontSizes } from '@fluentui/react/lib/Styling';
 
 const colors = {
   white: '#ffffff',
+  black: '#292929',
   darkGray: '#333',
   lightGray: '#fefefe',
   mediumGray: '#adadad',
@@ -10,7 +11,9 @@ const colors = {
   lightHoverBackground: '#E7EFF7',
   darkHoverBackground: '#777777',
   activeBlue: '#1160B7',
-  activeDark: '1f1f1f',
+  activeDark: '#141414',
+  textDark: '#fefefe',
+  textMediumDark: '#adadad',
 };
 
 const styles = {
@@ -20,7 +23,7 @@ const styles = {
   },
   optionSetContainerDark: {
     padding: '10px',
-    backgroundColor: colors.darkBackground,
+    backgroundColor: colors.black,
   },
   optionSetLabel: {
     marginBottom: '10px',
@@ -32,7 +35,7 @@ const styles = {
     marginBottom: '10px',
     fontWeight: FontWeights.semibold,
     fontSize: FontSizes.medium,
-    color: colors.white,
+    color: colors.textDark,
   },
   optionSetChoices: {
     display: 'flex',
@@ -55,7 +58,7 @@ const styles = {
     margin: '5px',
     borderRadius: '6px',
     backgroundColor: colors.darkBackground,
-    color: colors.white,
+    color: colors.textDark,
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
