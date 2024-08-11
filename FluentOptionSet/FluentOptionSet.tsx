@@ -30,7 +30,7 @@ export const FluentOptionSet: React.FunctionComponent<FluentOptionSetProps> = Re
         ...(isDarkMode ? styles.optionSetContainerDark : {}),
         padding: '0px',
         boxSizing: 'border-box',
-        opacity: disabled ? 0.5 : 1,
+        opacity: disabled ? 0.9 : 1,
         pointerEvents: disabled ? 'none' : 'auto',
       }}
     >
