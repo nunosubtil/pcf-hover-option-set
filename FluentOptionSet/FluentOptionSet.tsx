@@ -45,7 +45,7 @@ export const FluentOptionSet: React.FunctionComponent<FluentOptionSetProps> = (p
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
           flexWrap: 'wrap', 
-          justifyContent: 'flex-start', 
+          justifyContent: 'flex-start',
           width: '100%',
         }}
       >
@@ -62,8 +62,8 @@ export const FluentOptionSet: React.FunctionComponent<FluentOptionSetProps> = (p
                 : {}),
               userSelect: 'none',
               padding: '5px',
-              flexGrow: 1, 
-              flexBasis: '30%', 
+              flexGrow: 0, 
+              flexBasis: 'auto',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -71,6 +71,7 @@ export const FluentOptionSet: React.FunctionComponent<FluentOptionSetProps> = (p
               boxSizing: 'border-box',
               height: '30px',
               marginBottom: '5px',
+              whiteSpace: 'nowrap',
             }}
             onClick={() => onChangeOption(item.Value.toString())}
             onMouseEnter={(e) => {
