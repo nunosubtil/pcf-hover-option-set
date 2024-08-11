@@ -15,6 +15,8 @@ export const FluentOptionSet: React.FunctionComponent<FluentOptionSetProps> = Re
 
   const valueKey = selectedValue != null ? selectedValue.toString() : undefined;
 
+  const isMobile = window.innerWidth <= 600;
+
   const onChangeOption = (key: string) => {
     if (!disabled) {
       onChange(parseInt(key));
@@ -39,6 +41,7 @@ export const FluentOptionSet: React.FunctionComponent<FluentOptionSetProps> = Re
           flexWrap: 'wrap',
           justifyContent: 'flex-start', 
           gap: '5px', 
+          width: '100%',
         }}
       >
         {options.map((item) => (
@@ -60,20 +63,33 @@ export const FluentOptionSet: React.FunctionComponent<FluentOptionSetProps> = Re
             onClick={() => onChangeOption(item.Value.toString())}
             onMouseEnter={(e) => {
               if (!disabled) {
-                (e.currentTarget as HTMLDivElement).style.backgroundColor = valueKey === item.Value.toString() ? '#1160B7' : isDarkMode ? '#777777' : '#E7EFF7';
-                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.1)';
+                (e.currentTarget as HTMLDivElement).style.backgroundColor = valueKey === item.Value.toString()
+                  ? isDarkMode 
+                    ? styles.optionSetChoiceSelectedDark.backgroundColor 
+                    : styles.optionSetChoiceSelected.backgroundColor
+                  : isDarkMode 
+                    ? styles.optionSetChoiceDark.backgroundColor 
+                    : styles.optionSetChoice.backgroundColor;
+                if (!isMobile) {
+                  (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.1)';
+                }
               }
-            }}
+            }}            
             onMouseLeave={(e) => {
               if (!disabled) {
                 (e.currentTarget as HTMLDivElement).style.backgroundColor = valueKey === item.Value.toString()
-                  ? '#1160B7' // This is the selected color
-                  : isDarkMode
-                    ? '#141414' // Ensure this matches your intended dark mode background
-                    : '#f8f9fa'; // Light mode background
-                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1)';
+                  ? isDarkMode 
+                    ? styles.optionSetChoiceSelectedDark.backgroundColor 
+                    : styles.optionSetChoiceSelected.backgroundColor
+                  : isDarkMode 
+                    ? styles.optionSetChoiceDark.backgroundColor 
+                    : styles.optionSetChoice.backgroundColor;
+                if (!isMobile) {
+                  (e.currentTarget as HTMLDivElement).style.transform = 'scale(1)';
+                }
               }
             }}
+            
           >
             <span>{item.Label}</span>
           </div>
