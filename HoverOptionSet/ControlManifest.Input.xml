@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="nunosubtil" constructor="PCFFluentOptionSet" version="0.0.1" display-name-key="PCFFluentOptionSet" description-key="PCFFluentOptionSet description" control-type="virtual">
+  <control namespace="nunosubtil" constructor="PCFHoverOptionSet" version="0.0.1" display-name-key="PCFHoverOptionSet" description-key="PCFHoverOptionSet description" control-type="virtual">
     <external-service-usage enabled="false">
     </external-service-usage>
     <property name="optionsetFieldControl" display-name-key="OptionSet_Display_Key" description-key="OptionSet_Desc_Key" of-type="OptionSet" usage="bound" required="true" />

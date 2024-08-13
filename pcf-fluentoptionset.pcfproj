@@ -8,7 +8,7 @@
   <Import Project="$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Pcf.props" Condition="Exists('$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Pcf.props')" />
 
   <PropertyGroup>
-    <Name>pcf-fluentoptionset</Name>
+    <Name>pcf-hoveroptionset</Name>
     <ProjectGuid>d945c23c-428a-41d8-bbd8-2d0d9f01d891</ProjectGuid>
     <OutputPath>$(MSBuildThisFileDirectory)out\controls</OutputPath>
   </PropertyGroup>
@@ -17,12 +17,12 @@
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <!--Remove TargetFramework when this is available in 16.1-->
     <TargetFramework>net462</TargetFramework>
-    <SolutionName>PCFFluentOptionSet</SolutionName> 
+    <SolutionName>PCFHoverOptionSet</SolutionName> 
     <PublisherName>nunosubtil</PublisherName> 
     <CustomizationPrefix>subtil</CustomizationPrefix> 
     <Version>1.0.0.1</Version> 
     <License>MIT</License> 
-    <Description>A fluent option set control for PowerApps developed by Nuno Subtil</Description>
+    <Description>A interactive option set control for PowerApps developed by Nuno Subtil</Description>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
 

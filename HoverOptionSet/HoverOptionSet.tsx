@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import styles from './styles/styles';
 
-export interface FluentOptionSetProps {
+export interface HoverOptionSetProps {
   selectedValue: number | null;
   options: ComponentFramework.PropertyHelper.OptionMetadata[];
   onChange: (newValue: number | undefined) => void;
@@ -12,7 +12,7 @@ export interface FluentOptionSetProps {
   formFactor: number;
 }
 
-export const FluentOptionSet: React.FunctionComponent<FluentOptionSetProps> = (props) => {
+export const HoverOptionSet: React.FunctionComponent<HoverOptionSetProps> = (props) => {
   const { selectedValue, options, onChange, isDarkMode, disabled, formFactor } = props;
 
   const [isMobile, setIsMobile] = useState(formFactor === 2 || formFactor === 3);
@@ -111,4 +111,4 @@ export const FluentOptionSet: React.FunctionComponent<FluentOptionSetProps> = (p
   );
 };
 
-FluentOptionSet.displayName = 'FluentOptionSet';
+HoverOptionSet.displayName = 'HoverOptionSet';

@@ -1,8 +1,8 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
-import { FluentOptionSet, FluentOptionSetProps } from "./FluentOptionSet"; 
+import { HoverOptionSet, HoverOptionSetProps } from "./HoverOptionSet"; 
 import * as React from "react";
 
-export class PCFFluentOptionSet implements ComponentFramework.ReactControl<IInputs, IOutputs> {
+export class PCFHoverOptionSet implements ComponentFramework.ReactControl<IInputs, IOutputs> {
     private notifyOutputChanged: () => void;
     private _selectedValue: number;
     private _options: ComponentFramework.PropertyHelper.OptionMetadata[];
@@ -35,7 +35,7 @@ export class PCFFluentOptionSet implements ComponentFramework.ReactControl<IInpu
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
         this._updateContextValues(context);
 
-        const props: FluentOptionSetProps = {
+        const props: HoverOptionSetProps = {
             selectedValue: this._selectedValue,
             options: this._options,
             onChange: this._updateValue.bind(this),
@@ -44,7 +44,7 @@ export class PCFFluentOptionSet implements ComponentFramework.ReactControl<IInpu
             disabled: this._isDisabled
         };
 
-        return React.createElement(FluentOptionSet, props);
+        return React.createElement(HoverOptionSet, props);
     }
 
     private _updateContextValues(context: ComponentFramework.Context<IInputs>): void {
