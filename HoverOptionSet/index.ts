@@ -1,5 +1,5 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
-import { HoverOptionSet, HoverOptionSetProps } from "./HoverOptionSet"; 
+import { HoverOptionSet, IHoverOptionSetProps } from "./HoverOptionSet"; 
 import * as React from "react";
 
 export class PCFHoverOptionSet implements ComponentFramework.ReactControl<IInputs, IOutputs> {
@@ -35,7 +35,7 @@ export class PCFHoverOptionSet implements ComponentFramework.ReactControl<IInput
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
         this._updateContextValues(context);
 
-        const props: HoverOptionSetProps = {
+        const props: IHoverOptionSetProps = {
             selectedValue: this._selectedValue,
             options: this._options,
             onChange: this._updateValue.bind(this),
