@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import styles from './styles/styles';
 
-export interface HoverOptionSetProps {
+export interface IHoverOptionSetProps {
   selectedValue: number | null;
   options: ComponentFramework.PropertyHelper.OptionMetadata[];
   onChange: (newValue: number | undefined) => void;
@@ -12,7 +12,7 @@ export interface HoverOptionSetProps {
   formFactor: number;
 }
 
-export const HoverOptionSet: React.FunctionComponent<HoverOptionSetProps> = (props) => {
+export const HoverOptionSet: React.FunctionComponent<IHoverOptionSetProps> = (props) => {
   const { selectedValue, options, onChange, isDarkMode, disabled, formFactor } = props;
 
   const [isMobile, setIsMobile] = useState(formFactor === 2 || formFactor === 3);
