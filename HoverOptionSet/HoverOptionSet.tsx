@@ -12,7 +12,7 @@ export interface IHoverOptionSetProps {
   formFactor: number;
 }
 
-export const HoverOptionSet: React.FunctionComponent<IHoverOptionSetProps> = (props) => {
+export const HoverOptionSetComponent: React.FunctionComponent<IHoverOptionSetProps> = (props) => {
   const { selectedValue, options, onChange, isDarkMode, disabled, formFactor } = props;
 
   const [isMobile, setIsMobile] = useState(formFactor === 2 || formFactor === 3);
@@ -111,4 +111,4 @@ export const HoverOptionSet: React.FunctionComponent<IHoverOptionSetProps> = (pr
   );
 };
 
-HoverOptionSet.displayName = 'HoverOptionSet';
+HoverOptionSetComponent.displayName = 'HoverOptionSet';
