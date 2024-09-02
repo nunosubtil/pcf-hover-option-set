@@ -12,6 +12,13 @@
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <!--Remove TargetFramework when this is available in 16.1-->
     <TargetFramework>net462</TargetFramework>
+    <SolutionName>PCFHoverOptionSet</SolutionName> 
+    <PublisherName>nunosubtil</PublisherName> 
+    <CustomizationPrefix>subtil</CustomizationPrefix> 
+    <Version>1.0.0.1</Version> 
+    <License>MIT</License> 
+    <Description>A interactive option set field control for PowerApps developed by Nuno Subtil</Description>
+
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <SolutionRootPath>src</SolutionRootPath>
   </PropertyGroup>
@@ -22,10 +29,9 @@
   -->
  
   <PropertyGroup>
-    <SolutionPackageType>Managed</SolutionPackageType>
+    <SolutionPackageType>Both</SolutionPackageType>
     <SolutionPackageEnableLocalization>false</SolutionPackageEnableLocalization>
   </PropertyGroup>
-
 
   <ItemGroup>
     <PackageReference Include="Microsoft.PowerApps.MSBuild.Solution" Version="1.*" />
@@ -50,6 +56,7 @@
   
   <ItemGroup>
     <ProjectReference Include="..\pcf-hoveroptionset.pcfproj" />
+    <ProjectReference Include="..\pcf-hover-option-set.pcfproj" />
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
