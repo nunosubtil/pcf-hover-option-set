@@ -55,7 +55,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\pcf-hoveroptionset.pcfproj" />
     <ProjectReference Include="..\pcf-hover-option-set.pcfproj" />
   </ItemGroup>
 
